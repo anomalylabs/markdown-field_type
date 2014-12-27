@@ -1,0 +1,14 @@
+{{ add_asset("streams.css", "field_type.markdown::css/bootstrap-markdown.min.css") }}
+{{ add_asset("streams.js", "field_type.markdown::js/bootstrap-markdown.js") }}
+{{ add_asset("streams.js", "field_type.markdown::js/to-markdown.js") }}
+{{ add_asset("streams.js", "field_type.markdown::js/markdown.js") }}
+
+<textarea
+        name="{{ name }}"
+        class="form-control"
+        data-provide="markdown"
+        data-iconlibrary="fa"
+        data-height="500"
+        >
+    {{ value }}
+</textarea>
