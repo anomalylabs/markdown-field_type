@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\FieldType\Markdown;
+<?php namespace Anomaly\MarkdownFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
