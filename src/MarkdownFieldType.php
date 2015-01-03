@@ -17,5 +17,5 @@ class MarkdownFieldType extends FieldType
      *
      * @var string
      */
-    protected $inputView = 'field_type.markdown::input';
+    protected $inputView = 'anomaly.field_type.markdown::input';
 }
