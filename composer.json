@@ -1,5 +1,5 @@
 {
-    "name": "anomaly/markdown-field-type",
+    "name": "anomaly/markdown-field_type",
     "type": "streams-addon",
     "description": "Markdown field type.",
     "authors": [
