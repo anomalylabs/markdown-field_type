@@ -4,11 +4,11 @@
 {{ add_asset("streams.js", "anomaly.field_type.markdown::js/markdown.js") }}
 
 <textarea
-        name="{{ name }}"
+        name="{{ field_type.getFieldName() }}"
         class="form-control"
         data-provide="markdown"
         data-iconlibrary="fa"
         data-height="500"
         >
-    {{ value }}
+    {{ field_type.value }}
 </textarea>
