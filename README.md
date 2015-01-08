@@ -1,4 +1,3 @@
-markdown-field-type
-===================
+#Text Field Type
 
-Markdown field type.
+A text input field type.
