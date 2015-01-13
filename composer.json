@@ -2,7 +2,12 @@
     "name": "anomaly/markdown-field_type",
     "type": "streams-addon",
     "description": "A markdown editor field type.",
-    "keywords": ["streams-addon", "markdown", "pyrocms", "laravel"],
+    "keywords": [
+        "streams-addon",
+        "markdown",
+        "pyrocms",
+        "laravel"
+    ],
     "homepage": "http://anomaly.is/",
     "version": "1.0.0-alpha",
     "license": "MIT",
