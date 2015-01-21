@@ -1,3 +1,3 @@
-#Text Field Type
+#Markdown Field Type
 
-A text input field type.
+A markdown input field type.
