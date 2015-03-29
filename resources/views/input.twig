@@ -10,3 +10,5 @@
         data-iconlibrary="fa"
         data-height="{{ field_type.config.height ?: 300 }}"
         >{{ field_type.value }}</textarea>
+
+<small>File: <a href="#">{{ field_type.getStoragePath() }}</a></small>
