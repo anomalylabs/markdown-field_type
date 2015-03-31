@@ -78,7 +78,7 @@
           var z,
               buttons = btnGroups[y].data,
               btnGroupContainer = $('<div/>', {
-                                    'class': 'btn-group'
+                                    'class': 'ui buttons'
                                   })
 
           for (z=0;z<buttons.length;z++) {
@@ -94,9 +94,9 @@
 
             // Construct the button object
             buttonContainer = $('<button></button>');
-            buttonContainer.text(' ' + this.__localize(btnText)).addClass('btn-link btn-sm').addClass(btnClass);
+            buttonContainer.text(' ' + this.__localize(btnText)).addClass('ui small default button').addClass(btnClass);
             if(btnClass.match(/btn\-(primary|success|info|warning|danger|link)/)){
-                buttonContainer.removeClass('btn-link');
+                buttonContainer.removeClass('default');
             }
             buttonContainer.attr({
                 'type': 'button',
@@ -261,7 +261,7 @@
         }
 
         if (options.fullscreen.enable) {
-          editorHeader.append('<div class="md-controls"><a class="md-control md-control-fullscreen" href="#"><span class="'+this.__getIcon(options.fullscreen.icons.fullscreenOn)+'"></span></a></div>').on('click', '.md-control-fullscreen', function(e) {
+          editorHeader.append('<div class="ui buttons pull-right"><a class="ui button default md-control md-control-fullscreen" href="#"><span class="'+this.__getIcon(options.fullscreen.icons.fullscreenOn)+'"></span></a></div>').on('click', '.md-control-fullscreen', function(e) {
               e.preventDefault();
               instance.setFullscreen(true)
           })
@@ -315,7 +315,7 @@
           handler.push(saveHandler)
           callback.push(options.onSave)
 
-          editorFooter.append('<button class="btn btn-success" data-provider="'
+          editorFooter.append('<button class="ui green button" data-provider="'
                               +ns
                               +'" data-handler="'
                               +saveHandler
@@ -404,8 +404,8 @@
 
       if (options.fullscreen.enable && options.fullscreen !== false) {
         this.$editor.append('\
-          <div class="md-fullscreen-controls">\
-            <a href="#" class="exit-fullscreen" title="Exit fullscreen"><span class="'+this.__getIcon(options.fullscreen.icons.fullscreenOff)+'"></span></a>\
+          <div class="md-fullscreen-controls ui buttons">\
+            <a href="#" class="exit-fullscreen ui button" title="Exit fullscreen"><span class="'+this.__getIcon(options.fullscreen.icons.fullscreenOff)+'"></span></a>\
           </div>')
 
         this.$editor.on('click', '.exit-fullscreen', function(e) {
@@ -1232,7 +1232,7 @@
           hotkey: 'Ctrl+P',
           title: 'Preview',
           btnText: 'Preview',
-          btnClass: 'btn btn-primary btn-sm',
+          btnClass: 'ui small button blue',
           icon: { glyph: 'glyphicon glyphicon-search', fa: 'fa fa-search', 'fa-3': 'icon-search' },
           callback: function(e){
             // Check the preview mode and toggle based on this flag
