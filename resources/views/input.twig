@@ -1,13 +1,13 @@
-{{ asset_add("styles.css", "anomaly.field_type.markdown::css/markdown.css") }}
+{{ asset_add("styles.css", "anomaly.field_type.markdown::css/bootstrap-markdown.min.css") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/bootstrap-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/to-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/markdown.js") }}
 
 <textarea
-        name="{{ field_type.getInputName() }}"
         class="form-control"
-        data-provide="markdown"
         data-iconlibrary="fa"
+        data-provide="markdown"
+        name="{{ field_type.getInputName() }}"
         data-height="{{ field_type.config.height ?: 300 }}"
         >{{ field_type.value }}</textarea>
 
