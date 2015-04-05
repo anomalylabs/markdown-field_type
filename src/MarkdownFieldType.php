@@ -80,4 +80,14 @@ class MarkdownFieldType extends FieldType
 
         return $this->application->getStoragePath("{$namespace}/{$slug}/{$folder}/{$file}");
     }
+
+    /**
+     * Get the application storage page.
+     *
+     * @return string
+     */
+    public function getAppStoragePath()
+    {
+        return str_replace(base_path(), '', $this->getStoragePath());
+    }
 }

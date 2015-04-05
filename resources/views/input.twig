@@ -1,4 +1,4 @@
-{{ asset_add("styles.css", "anomaly.field_type.markdown::css/bootstrap-markdown.min.css") }}
+{{ asset_add("styles.css", "anomaly.field_type.markdown::css/bootstrap-markdown.css", ["min"]) }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/bootstrap-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/to-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/markdown.js") }}
@@ -11,4 +11,4 @@
         data-height="{{ field_type.config.height ?: 300 }}"
         >{{ field_type.value }}</textarea>
 
-<small>File: <a href="#">{{ field_type.getStoragePath() }}</a></small>
+<small><a href="#">{{ field_type.getAppStoragePath() }}</a></small>
