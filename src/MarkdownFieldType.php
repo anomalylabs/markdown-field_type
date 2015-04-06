@@ -69,7 +69,7 @@ class MarkdownFieldType extends FieldType
             return null;
         }
 
-        if (!$this->entry->getId()) {
+        if (!$this->entry->getTitle()) {
             return null;
         }
 
