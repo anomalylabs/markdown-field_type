@@ -62,7 +62,7 @@ class MarkdownFieldTypeAccessor extends FieldTypeAccessor
      */
     public function set(EloquentModel $entry, $value)
     {
-        if ($entry instanceof EntryInterface && $this->fieldType->setEntry($entry)) {
+        if ($entry instanceof EntryInterface && $entry->getId() && $this->fieldType->setEntry($entry)) {
 
             $path = $this->fieldType->getStoragePath($entry);
 
