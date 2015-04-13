@@ -2,7 +2,6 @@
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAccessor;
-use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Model\EloquentModel;
 use Illuminate\Filesystem\Filesystem;
@@ -33,23 +32,14 @@ class MarkdownFieldTypeAccessor extends FieldTypeAccessor
     protected $fieldType;
 
     /**
-     * The application utility.
-     *
-     * @var Application
-     */
-    protected $application;
-
-    /**
      * Create a new MarkdownFieldTypeAccessor instance.
      *
-     * @param FieldType   $fieldType
-     * @param Application $application
-     * @param Filesystem  $files
+     * @param FieldType  $fieldType
+     * @param Filesystem $files
      */
-    public function __construct(FieldType $fieldType, Application $application, Filesystem $files)
+    public function __construct(FieldType $fieldType, Filesystem $files)
     {
-        $this->files       = $files;
-        $this->application = $application;
+        $this->files = $files;
 
         parent::__construct($fieldType);
     }
