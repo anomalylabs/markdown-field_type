@@ -1,6 +1,5 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
-use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAccessor;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Model\EloquentModel;
@@ -34,10 +33,10 @@ class MarkdownFieldTypeAccessor extends FieldTypeAccessor
     /**
      * Create a new MarkdownFieldTypeAccessor instance.
      *
-     * @param FieldType  $fieldType
-     * @param Filesystem $files
+     * @param MarkdownFieldType $fieldType
+     * @param Filesystem        $files
      */
-    public function __construct(FieldType $fieldType, Filesystem $files)
+    public function __construct(MarkdownFieldType $fieldType, Filesystem $files)
     {
         $this->files = $files;
 
