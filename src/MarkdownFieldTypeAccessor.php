@@ -1,9 +1,8 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
+use Anomaly\MarkdownFieldType\Command\GetFile;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAccessor;
-use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
-use Anomaly\Streams\Platform\Model\EloquentModel;
-use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 /**
  * Class MarkdownFieldTypeAccessor
@@ -16,73 +15,15 @@ use Illuminate\Filesystem\Filesystem;
 class MarkdownFieldTypeAccessor extends FieldTypeAccessor
 {
 
-    /**
-     * The file system.
-     *
-     * @var Filesystem
-     */
-    protected $files;
-
-    /**
-     * The field type.
-     *
-     * @var MarkdownFieldType
-     */
-    protected $fieldType;
-
-    /**
-     * Create a new MarkdownFieldTypeAccessor instance.
-     *
-     * @param MarkdownFieldType $fieldType
-     * @param Filesystem        $files
-     */
-    public function __construct(MarkdownFieldType $fieldType, Filesystem $files)
-    {
-        $this->files = $files;
-
-        parent::__construct($fieldType);
-    }
-
-    /**
-     * Set the value on the entry.
-     *
-     * @param EloquentModel $entry
-     * @param               $value
-     */
-    public function set(EloquentModel $entry, $value)
-    {
-        if ($entry instanceof EntryInterface && $entry->getTitle() && $this->fieldType->setEntry($entry)) {
-
-            $path = $this->fieldType->getStoragePath($entry);
-
-            if ($path && !is_dir(dirname($path))) {
-                $this->files->makeDirectory(dirname($path), 0777, true, true);
-            }
-
-            $this->files->put($path, $value);
-        }
-
-        parent::set($entry, $value);
-    }
+    use DispatchesCommands;
 
     /**
      * Get the value off the entry.
      *
-     * @param EloquentModel $entry
-     * @return mixed
+     * @return string
      */
-    public function get(EloquentModel $entry)
+    public function get()
     {
-        if ($entry instanceof EntryInterface && $this->fieldType->setEntry($entry)) {
-
-            $path = $this->fieldType->getStoragePath($entry);
-
-            if ($path && file_exists($path) && $value = $this->files->get($path)) {
-
-                return $value;
-            }
-        }
-
-        return parent::get($entry);
+        return $this->dispatch(new GetFile($this->fieldType));
     }
 }

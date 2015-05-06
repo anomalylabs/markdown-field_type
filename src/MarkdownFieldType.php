@@ -1,5 +1,8 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
+use Anomaly\MarkdownFieldType\Command\DeleteDirectory;
+use Anomaly\MarkdownFieldType\Command\PutFile;
+use Anomaly\MarkdownFieldType\Command\RenameDirectory;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 use Anomaly\Streams\Platform\Application\Application;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
@@ -53,12 +56,6 @@ class MarkdownFieldType extends FieldType
      */
     public function getStoragePath()
     {
-
-        // If it's manually set just return it.
-        if ($path = $this->configGet('path')) {
-            return $path;
-        }
-
         // No entry, no path.
         if (!$this->entry) {
             return null;
@@ -75,10 +72,10 @@ class MarkdownFieldType extends FieldType
 
         $slug      = $this->entry->getStreamSlug();
         $namespace = $this->entry->getStreamNamespace();
-        $folder    = str_slug($this->entry->getTitle(), '_');
-        $file      = $this->getField() . '.md';
+        $directory = $this->getStorageDirectoryName();
+        $file      = $this->getStorageFileName();
 
-        return $this->application->getStoragePath("{$namespace}/{$slug}/{$folder}/{$file}");
+        return $this->application->getStoragePath("{$namespace}/{$slug}/{$directory}/{$file}");
     }
 
     /**
@@ -89,5 +86,49 @@ class MarkdownFieldType extends FieldType
     public function getAppStoragePath()
     {
         return str_replace(base_path(), '', $this->getStoragePath());
+    }
+
+    /**
+     * Get the storage directory name.
+     *
+     * @return string
+     */
+    protected function getStorageDirectoryName()
+    {
+        return str_slug($this->entry->getTitle() . '_' . $this->entry->getId(), '_');
+    }
+
+    /**
+     * Get the storage file name.
+     *
+     * @return string
+     */
+    protected function getStorageFileName()
+    {
+        return $this->getField() . '.md';
+    }
+
+    /**
+     * Fired after an entry is saved.
+     */
+    public function onEntrySaved()
+    {
+        $this->dispatch(new PutFile($this));
+    }
+
+    /**
+     * Fired after an entry is deleted.
+     */
+    public function onEntryDeleted()
+    {
+        $this->dispatch(new DeleteDirectory($this));
+    }
+
+    /**
+     * Fired after an entry is deleted.
+     */
+    public function onEntryUpdated()
+    {
+        $this->dispatch(new RenameDirectory($this));
     }
 }

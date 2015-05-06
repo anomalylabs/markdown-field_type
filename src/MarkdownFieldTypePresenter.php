@@ -14,6 +14,24 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
 
     /**
+     * The decorated field type.
+     * This is for IDE hinting.
+     *
+     * @var MarkdownFieldType
+     */
+    protected $object;
+
+    /**
+     * Return the storage path.
+     *
+     * @return null|string
+     */
+    public function path()
+    {
+        return $this->object->getStoragePath();
+    }
+
+    /**
      * Return the parsed content.
      *
      * @return string
