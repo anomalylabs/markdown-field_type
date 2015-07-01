@@ -2,11 +2,10 @@
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/bootstrap-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/to-markdown.js") }}
 {{ asset_add("scripts.js", "anomaly.field_type.markdown::js/markdown.js") }}
+{{ asset_add("scripts.js", "anomaly.field_type.markdown::js/input.js") }}
 
 <textarea
         class="form-control"
-        data-iconlibrary="fa"
-        data-provide="markdown"
         name="{{ field_type.input_name }}"
         data-height="{{ field_type.config.height ?: 300 }}"
         >{{ field_type.value }}</textarea>
