@@ -2,5 +2,5 @@
 
 return [
     'name'        => 'Markdown',
-    'description' => 'A markdown editor field type.',
+    'description' => 'A markdown editor field type.'
 ];

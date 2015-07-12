@@ -2,7 +2,7 @@
 
 return [
     'height' => [
-        'label'        => 'Editor Height',
-        'instructions' => 'Define the initial editor height.'
+        'label'        => 'Height',
+        'instructions' => 'Specify the editor height in pixels.'
     ]
 ];

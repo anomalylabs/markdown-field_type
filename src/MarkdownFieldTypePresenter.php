@@ -28,7 +28,17 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function path()
     {
-        return $this->object->getStoragePath();
+        return $this->object->getAssetPath();
+    }
+
+    /**
+     * Render markdown content.
+     *
+     * @return string
+     */
+    public function render()
+    {
+        return app('Michelf\Markdown')->transform($this->object->getValue());
     }
 
     /**
