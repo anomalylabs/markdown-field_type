@@ -67,7 +67,7 @@ class MarkdownFieldType extends FieldType
         $directory = $this->entry->getEntryId();
         $file      = $this->getFileName();
 
-        return "{$namespace}/types/{$slug}/{$directory}/{$file}";
+        return "{$namespace}/{$slug}/{$directory}/{$file}";
     }
 
     /**
