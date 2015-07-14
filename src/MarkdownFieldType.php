@@ -99,7 +99,7 @@ class MarkdownFieldType extends FieldType
             return null;
         }
 
-        return 'storage::' . $this->getFilePath();
+        return 'storage::' . $this->getFilePath($path);
     }
 
     /**
