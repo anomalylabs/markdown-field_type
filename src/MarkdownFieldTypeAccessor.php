@@ -1,8 +1,9 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
 use Anomaly\MarkdownFieldType\Command\GetFile;
+use Anomaly\MarkdownFieldType\Command\PutFile;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAccessor;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class MarkdownFieldTypeAccessor
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class MarkdownFieldTypeAccessor extends FieldTypeAccessor
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * Get the value off the entry.
@@ -24,6 +25,10 @@ class MarkdownFieldTypeAccessor extends FieldTypeAccessor
      */
     public function get()
     {
+        if (!file_exists($this->fieldType->getStoragePath())) {
+            $this->dispatch(new PutFile($this->fieldType));
+        }
+
         return $this->dispatch(new GetFile($this->fieldType));
     }
 }
