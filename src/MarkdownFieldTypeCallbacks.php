@@ -2,7 +2,7 @@
 
 use Anomaly\MarkdownFieldType\Command\DeleteDirectory;
 use Anomaly\MarkdownFieldType\Command\PutFile;
-use Illuminate\Foundation\Bus\DispatchesCommands;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 /**
  * Class MarkdownFieldTypeCallbacks
@@ -15,7 +15,7 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 class MarkdownFieldTypeCallbacks
 {
 
-    use DispatchesCommands;
+    use DispatchesJobs;
 
     /**
      * Fired after an entry is saved.
