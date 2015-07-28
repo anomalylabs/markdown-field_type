@@ -36,7 +36,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      *
      * @return string
      */
-    public function render()
+    public function rendered()
     {
         return app('Michelf\Markdown')->transform($this->object->getValue());
     }
