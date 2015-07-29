@@ -15,5 +15,5 @@ protected $fields = [
 
 ### `height`
 
-Height of the markdown editor. The default value is `300`.
+The height in pixels of the markdown editor. The default value is `300`.
 

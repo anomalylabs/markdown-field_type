@@ -2,26 +2,26 @@
 
 This field type returns the rendered markdown content by default.
 
-### Path 
-
-Get the storage path.
-
-```
-// Twig Usage
-{{ entry.example.path }}
-
-// API usage
-$entry->example->path();
-```
-
 ### Rendered
 
-Get rendered markdown content
+Returns the rendered markdown content.
 
 ```
 // Twig Usage
-{{ entry.example.rendered }}
+{{ entry.example.rendered|raw }}
 
 // API usage
 $entry->example->rendered();
+```
+
+### Parsed
+
+Returns the rendered markdown content put through the parser.
+
+```
+// Twig Usage
+{{ entry.example.parsed|raw }}
+
+// API usage
+$entry->example->parsed();
 ```

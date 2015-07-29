@@ -1,6 +1,8 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
+use Anomaly\Streams\Platform\Support\String;
+use Michelf\Markdown;
 
 /**
  * Class MarkdownFieldTypePresenter
@@ -14,6 +16,13 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
 
     /**
+     * The string parser.
+     *
+     * @var String
+     */
+    protected $string;
+
+    /**
      * The decorated field type.
      * This is for IDE hinting.
      *
@@ -22,23 +31,45 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     protected $object;
 
     /**
-     * Return the storage path.
+     * The markdown editor.
      *
-     * @return null|string
+     * @var Markdown
      */
-    public function path()
+    protected $markdown;
+
+    /**
+     * Create a new MarkdownFieldTypePresenter instance.
+     *
+     * @param String   $string
+     * @param Markdown $markdown
+     * @param          $object
+     */
+    public function __construct(String $string, Markdown $markdown, $object)
     {
-        return $this->object->getAssetPath();
+        $this->string   = $string;
+        $this->markdown = $markdown;
+
+        parent::__construct($object);
     }
 
     /**
-     * Render markdown content.
+     * Return the rendered content.
      *
      * @return string
      */
     public function rendered()
     {
-        return app('Michelf\Markdown')->transform($this->object->getValue());
+        return $this->markdown->transform($this->object->getValue());
+    }
+
+    /**
+     * Return the parsed content.
+     *
+     * @return string
+     */
+    public function parsed()
+    {
+        return $this->string->render($this->rendered());
     }
 
     /**
@@ -48,6 +79,6 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function __toString()
     {
-        return app('Michelf\Markdown')->transform($this->object->getValue());
+        return $this->rendered();
     }
 }
