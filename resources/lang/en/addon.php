@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'name'        => 'Markdown',
+    'title'       => 'Markdown',
+    'name'        => 'Markdown Field Type',
     'description' => 'A markdown editor field type.'
 ];
