@@ -16,7 +16,7 @@ class DeleteDirectory implements SelfHandling
 {
 
     /**
-     * The markdown field type instance.
+     * The editor field type instance.
      *
      * @var MarkdownFieldType
      */

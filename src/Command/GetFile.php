@@ -16,7 +16,7 @@ class GetFile implements SelfHandling
 {
 
     /**
-     * The markdown field type instance.
+     * The editor field type instance.
      *
      * @var MarkdownFieldType
      */
@@ -41,7 +41,7 @@ class GetFile implements SelfHandling
     {
         $path = $this->fieldType->getStoragePath();
 
-        if ($path && $files->exists($path)) {
+        if ($path && $files->isFile($path)) {
             return $files->get($path);
         }
 

@@ -46,14 +46,25 @@ class SyncFile implements SelfHandling
         $path  = $this->fieldType->getStoragePath();
         $entry = $this->fieldType->getEntry();
 
+        if (!file_exists($this->fieldType->getStoragePath())) {
+            $this->dispatch(new PutFile($this->fieldType));
+        }
+
         $content = $this->dispatch(new GetFile($this->fieldType));
 
-        if (md5($content) == md5($entry->getRawAttribute($this->fieldType->getField()))) {
+        if (md5($content) == md5($entry->getRawAttribute($this->fieldType->getField(), false))) {
             return $content;
         }
 
         if (filemtime($path) > $entry->lastModified()->timestamp) {
             $repository->save($entry->setRawAttribute($this->fieldType->getField(), $content));
+        }
+
+        if (filemtime($path) < $entry->lastModified()->timestamp) {
+
+            $this->dispatch(new PutFile($this->fieldType));
+
+            return $entry->getRawAttribute($this->fieldType->getField(), false);
         }
 
         return $content;
