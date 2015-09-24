@@ -16,7 +16,7 @@ class PutFile implements SelfHandling
 {
 
     /**
-     * The editor field type instance.
+     * The markdown field type instance.
      *
      * @var MarkdownFieldType
      */
@@ -47,7 +47,7 @@ class PutFile implements SelfHandling
         }
 
         if ($path) {
-            $files->put($path, $entry->getRawAttribute($this->fieldType->getField(), false));
+            $files->put($path, array_get($entry->getAttributes(), $this->fieldType->getField()));
         }
     }
 }
