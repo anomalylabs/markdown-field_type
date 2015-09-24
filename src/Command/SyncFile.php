@@ -19,7 +19,7 @@ class SyncFile implements SelfHandling
     use DispatchesJobs;
 
     /**
-     * The editor field type instance.
+     * The markdown field type instance.
      *
      * @var MarkdownFieldType
      */
