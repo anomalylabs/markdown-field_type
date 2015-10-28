@@ -1,5 +1,6 @@
 <?php namespace Anomaly\MarkdownFieldType\Command;
 
+use Anomaly\EditorFieldType\Command\ClearCache;
 use Anomaly\MarkdownFieldType\MarkdownFieldType;
 use Anomaly\Streams\Platform\Entry\Contract\EntryRepositoryInterface;
 use Illuminate\Contracts\Bus\SelfHandling;
@@ -64,8 +65,10 @@ class SyncFile implements SelfHandling
 
             $this->dispatch(new PutFile($this->fieldType));
 
-            return $entry->getRawAttribute($this->fieldType->getField(), false);
+            $content = $entry->getRawAttribute($this->fieldType->getField(), false);
         }
+
+        $this->dispatch(new ClearCache());
 
         return $content;
     }
