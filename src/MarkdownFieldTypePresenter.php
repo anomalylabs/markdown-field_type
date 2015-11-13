@@ -69,7 +69,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function parsed()
     {
-        return $this->string->render($this->rendered());
+        return $this->string->render($this->rendered(), []);
     }
 
     /**
@@ -79,6 +79,10 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function __toString()
     {
+        if (!$this->object->getValue()) {
+            return '';
+        }
+        
         return $this->rendered();
     }
 }
