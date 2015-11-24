@@ -62,8 +62,7 @@ class MarkdownFieldType extends FieldType
      */
     public function getFilePath()
     {
-        // If the entry is not an object or doesn't exist, skip it.
-        if (!is_object($this->entry) || !$this->entry || !$this->entry->exists) {
+        if (!is_object($this->entry) || !$this->entry->getId()) {
             return null;
         }
 

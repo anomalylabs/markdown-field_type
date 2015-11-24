@@ -1,6 +1,7 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
+use Anomaly\Streams\Platform\Support\Decorator;
 use Anomaly\Streams\Platform\Support\String;
 use Michelf\Markdown;
 
@@ -65,11 +66,12 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return the parsed content.
      *
+     * @param array $payload
      * @return string
      */
-    public function parsed()
+    public function parsed(array $payload = [])
     {
-        return $this->string->render($this->rendered(), []);
+        return $this->string->render($this->rendered(), (new Decorator())->decorate($payload));
     }
 
     /**
@@ -82,7 +84,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
         if (!$this->object->getValue()) {
             return '';
         }
-        
+
         return $this->rendered();
     }
 }
