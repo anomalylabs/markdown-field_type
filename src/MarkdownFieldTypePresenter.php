@@ -2,7 +2,7 @@
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
 use Anomaly\Streams\Platform\Support\Decorator;
-use Anomaly\Streams\Platform\Support\String;
+use Anomaly\Streams\Platform\Support\Template;
 use Michelf\Markdown;
 
 /**
@@ -17,11 +17,11 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
 
     /**
-     * The string parser.
+     * The template parser.
      *
-     * @var String
+     * @var Template
      */
-    protected $string;
+    protected $template;
 
     /**
      * The decorated field type.
@@ -41,13 +41,13 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Create a new MarkdownFieldTypePresenter instance.
      *
-     * @param String   $string
+     * @param Template $template
      * @param Markdown $markdown
      * @param          $object
      */
-    public function __construct(String $string, Markdown $markdown, $object)
+    public function __construct(Template $template, Markdown $markdown, $object)
     {
-        $this->string   = $string;
+        $this->template = $template;
         $this->markdown = $markdown;
 
         parent::__construct($object);
@@ -71,7 +71,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function parsed(array $payload = [])
     {
-        return $this->string->render($this->rendered(), (new Decorator())->decorate($payload));
+        return $this->template->render($this->rendered(), (new Decorator())->decorate($payload));
     }
 
     /**
