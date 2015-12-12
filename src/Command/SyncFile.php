@@ -53,7 +53,7 @@ class SyncFile implements SelfHandling
 
         $content = $this->dispatch(new GetFile($this->fieldType));
 
-        if (md5($content) == md5($entry->getRawAttribute($this->fieldType->getField(), false))) {
+        if (md5($content) == md5(array_get($entry->getAttributes(), $this->fieldType->getField())) {
             return $content;
         }
 
@@ -65,7 +65,7 @@ class SyncFile implements SelfHandling
 
             $this->dispatch(new PutFile($this->fieldType));
 
-            $content = $entry->getRawAttribute($this->fieldType->getField(), false);
+            $content = array_get($entry->getAttributes(), $this->fieldType->getField());
         }
 
         $this->dispatch(new ClearCache());
