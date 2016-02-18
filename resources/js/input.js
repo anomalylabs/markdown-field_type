@@ -1,8 +1,7 @@
 $(function () {
 
     // Initialize markdown inputs.
-    $('.markdown-field_type textarea').each(function () {
-
+    $('input[data-provides="anomaly.field_type.markdown"]').each(function () {
         $(this).markdown({
             height: $(this).data('height'),
             iconlibrary: 'fa'
