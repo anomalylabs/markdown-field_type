@@ -10,8 +10,6 @@
         data-height="{{ field_type.config.height }}"
         {{ html_attributes(field_type.attributes) }}
         {{ field_type.disabled ? 'disabled' }}
-        {{ field_type.readonly ? 'readonly' }}
-        {{ field_type.required ? 'required' }}
->{{ field_type.value }}</textarea>
+        {{ field_type.readonly ? 'readonly' }}>{{ field_type.value }}</textarea>
 
 <small class="text-muted">{{ field_type.storage_path }}</small>
