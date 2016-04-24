@@ -1,6 +1,5 @@
 # Configuration
 
-- [Addon Configuration](#addon)
 - [Basic Configuration](#basic)
 - [Extra Configuration](#extra)
 
@@ -20,19 +19,6 @@ protected $fields = [
     ]
 ];
 {% endcode %}
-
-<hr>
-
-<a name="addon"></a>
-## Addon Configuration
-
-The markdown field type configures Ace options using it's `editor.php` config file.
-
-You can override these options by overloading the configuration file with a config file of your own at `/resources/{reference}/config/addons/markdown-field_type/markdown.php`
-
-<div class="alert alert-success">
-<strong>Success:</strong> If you feel a popular mode is missing - add it to the config and send a pull request to <a href="https://github.com/anomalylabs/markdown-field_type" target="_blank">https://github.com/anomalylabs/markdown-field_type</a>
-</div>
 
 <hr>
 
