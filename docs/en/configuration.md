@@ -13,7 +13,6 @@ protected $fields = [
         "type"   => "anomaly.field_type.country",
         "config" => [
             "default_value" => null,
-            "mode"          => "twig",
             "height"        => 500
         ]
     ]
@@ -30,18 +29,6 @@ protected $fields = [
     {{ code('php', '"default_value" => "# Hello World"') }}
 
 The `default_value` is a core option. This field type accepts any string value.
-
-### Input Mode
-
-{{ code('php', '"mode" => "twig"') }}
-
-Specify the input mode to display. The modes are determined by the `editor.php` config file. The mode dictates the syntax highlighting and behavior of the input.
-
-<div class="alert alert-primary">
-<strong>Note:</strong> This option determines storage format and can not be set dynamically on the form builder.
-</div>
-
-<hr>
 
 <a name="extra"></a>
 ## Extra Configuration
