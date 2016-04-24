@@ -27,7 +27,7 @@ protected $fields = [
 
 ### Default Value
 
-    {{ code('php', '"default_value" => "<h1>Hello World</h1>"') }}
+    {{ code('php', '"default_value" => "# Hello World"') }}
 
 The `default_value` is a core option. This field type accepts any string value.
 
