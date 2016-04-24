@@ -60,17 +60,18 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function render()
     {
-        return $this->rendered();
+        return $this->markdown->transform($this->object->getValue());
     }
 
     /**
      * Return the rendered content.
      *
      * @return string
+     * @deprecated since version 2.0
      */
     public function rendered()
     {
-        return $this->markdown->transform($this->object->getValue());
+        return $this->render();
     }
 
     /**
@@ -81,7 +82,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function parse(array $payload = [])
     {
-        return $this->parsed($payload);
+        return $this->template->render($this->render(), (new Decorator())->decorate($payload));
     }
 
     /**
@@ -92,7 +93,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function parsed(array $payload = [])
     {
-        return $this->template->render($this->rendered(), (new Decorator())->decorate($payload));
+        return $this->parse($payload);
     }
 
     /**
