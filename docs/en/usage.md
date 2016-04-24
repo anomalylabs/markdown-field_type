@@ -68,3 +68,20 @@ Return the storage file contents. If there is newer information in the database,
 {% code php %}
 $entry->example->content(); // The storage file content
 {% endcode %}
+
+#### Text
+
+Return the text only contents. This method runs the HTML value through `strip_tags()`;
+
+{% code php %}
+$entry->example->text(); // The text only value
+{% endcode %}
+
+#### Excerpt
+
+Return a substring of the text value. An optional length and ending string parameters can also be passed.
+
+{% code php %}
+$entry->example->excerpt();              // The text only value limited to 100 characters and ending in "..."
+$entry->example->excerpt(160, '[more]'); // The text only value limited to 160 characters and ending in "[more]"
+{% endcode %}

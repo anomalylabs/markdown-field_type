@@ -97,6 +97,39 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
+     * Return the file contents.
+     *
+     * @return string
+     */
+    public function content()
+    {
+        return file_get_contents($this->object->getStoragePath());
+    }
+
+    /**
+     * Return an excerpt of the text.
+     *
+     * @param int    $length
+     * @param string $ending
+     * @return string
+     */
+    public function excerpt($length = 100, $ending = '...')
+    {
+        return $this->str->truncate($this->text(), $length, $ending);
+    }
+
+    /**
+     * Return the text from the content.
+     *
+     * @param null $allowed
+     * @return string
+     */
+    public function text($allowed = null)
+    {
+        return strip_tags($this->content(), $allowed);
+    }
+
+    /**
      * Return the parsed content.
      *
      * @return string
