@@ -7,17 +7,15 @@
 
 Below is the full configuration available with defaults.
 
-{% code php %}
-protected $fields = [
-    "example" => [
-        "type"   => "anomaly.field_type.country",
-        "config" => [
-            "default_value" => null,
-            "height"        => 500
+    protected $fields = [
+        "example" => [
+            "type"   => "anomaly.field_type.country",
+            "config" => [
+                "default_value" => null,
+                "height"        => 500
+            ]
         ]
-    ]
-];
-{% endcode %}
+    ];
 
 <hr>
 
@@ -26,7 +24,7 @@ protected $fields = [
 
 ### Default Value
 
-    {{ code('php', '"default_value" => "# Hello World"') }}
+    "default_value" => "# Hello World"
 
 The `default_value` is a core option. This field type accepts any string value.
 
@@ -35,7 +33,7 @@ The `default_value` is a core option. This field type accepts any string value.
 
 ### Editor Height
 
-{{ code('php', '"height" => 1000') }}
+    "height" => 1000
 
 Specify the height of the editor.
 
