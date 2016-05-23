@@ -12,4 +12,8 @@
         {{ field_type.disabled ? 'disabled' }}
         {{ field_type.readonly ? 'readonly' }}>{{ field_type.value }}</textarea>
 
-<small class="text-muted">{{ field_type.storage_path }}</small>
+{% if field_type.storage_path %}
+    <small class="text-muted hidden-md">
+        {{ field_type.storage_path }}
+    </small>
+{% endif %}
