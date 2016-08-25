@@ -12,7 +12,6 @@ use Anomaly\Streams\Platform\Entry\EntryTranslationsModel;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\MarkdownFieldType
  */
 class MarkdownFieldType extends FieldType
 {
@@ -54,7 +53,7 @@ class MarkdownFieldType extends FieldType
      * @var array
      */
     protected $config = [
-        'height' => 300
+        'height' => 300,
     ];
 
     /**

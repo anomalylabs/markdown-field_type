@@ -3,6 +3,6 @@
 return [
     'height' => [
         'label'        => 'Height',
-        'instructions' => 'Specify the editor height in pixels.'
-    ]
+        'instructions' => 'Specify the editor height in pixels.',
+    ],
 ];

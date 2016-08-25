@@ -2,7 +2,7 @@
 
 return [
     'height' => [
-        'label' => 'Magasság',
+        'label'    => 'Magasság',
     'instructions' => 'Határozd meg a szerkesztő magasságát pixelben.',
     ],
 ];

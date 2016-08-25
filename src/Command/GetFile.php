@@ -1,7 +1,6 @@
 <?php namespace Anomaly\MarkdownFieldType\Command;
 
 use Anomaly\MarkdownFieldType\MarkdownFieldType;
-use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Filesystem\Filesystem;
 
 /**
@@ -10,9 +9,8 @@ use Illuminate\Filesystem\Filesystem;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\MarkdownFieldType\Command
  */
-class GetFile implements SelfHandling
+class GetFile
 {
 
     /**

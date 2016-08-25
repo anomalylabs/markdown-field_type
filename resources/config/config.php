@@ -7,7 +7,7 @@ return [
         'config'   => [
             'default_value' => 300,
             'min'           => 200,
-            'step'          => 50
-        ]
-    ]
+            'step'          => 50,
+        ],
+    ],
 ];
