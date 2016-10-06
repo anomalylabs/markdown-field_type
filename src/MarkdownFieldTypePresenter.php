@@ -1,13 +1,14 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
+use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
+use Anomaly\Streams\Platform\Support\Decorator;
 use Anomaly\Streams\Platform\Support\Str;
 use Anomaly\Streams\Platform\Support\Template;
-use Anomaly\Streams\Platform\Support\Decorator;
-use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
 use Michelf\Markdown;
 
 class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
+
     /**
      * The string utility.
      *
@@ -40,7 +41,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Create a new MarkdownFieldTypePresenter instance.
      *
-     * @param Str      $str
+     * @param Str $str
      * @param Template $template
      * @param Markdown $markdown
      * @param          $object
@@ -52,6 +53,16 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
         $this->str      = $str;
 
         parent::__construct($object);
+    }
+
+    /**
+     * Return the applicable path.
+     *
+     * @return null|string
+     */
+    public function path()
+    {
+        return $this->object->getAssetPath();
     }
 
     /**
@@ -78,7 +89,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return the parsed content.
      *
-     * @param  array  $payload
+     * @param  array $payload
      * @return string
      */
     public function parse(array $payload = [])
@@ -89,7 +100,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return the parsed content.
      *
-     * @param  array  $payload
+     * @param  array $payload
      * @return string
      */
     public function parsed(array $payload = [])
@@ -110,7 +121,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return an excerpt of the text.
      *
-     * @param  int    $length
+     * @param  int $length
      * @param  string $ending
      * @return string
      */
@@ -122,7 +133,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return the text from the content.
      *
-     * @param  null   $allowed
+     * @param  null $allowed
      * @return string
      */
     public function text($allowed = null)
