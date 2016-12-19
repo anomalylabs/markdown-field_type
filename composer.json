@@ -17,6 +17,12 @@
             "role": "Owner"
         }
     ],
+    "required": {
+        "anomaly/streams-platform": "~1.1",
+        "anomaly/editor-field_type": "~2.1",
+        "rcrowe/twigbridge": "~0.10",
+        "michelf/php-markdown": "~1.4"
+    },
     "support": {
         "email": "support@anomaly.is"
     },
