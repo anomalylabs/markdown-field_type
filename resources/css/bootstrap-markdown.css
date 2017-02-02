@@ -115,7 +115,7 @@
     float: none
 }
 
-.md-editor.md-fullscreen-mode .btn {
+.md-editor.md-fullscreen-mode .btn:not(.btn-info) {
     border: 0;
     background: 0 0;
     color: #b3b3b3
