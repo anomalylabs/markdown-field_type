@@ -65,7 +65,11 @@ class SyncFile
          * If the file is newer and we're debugging
          * then update with the file's content.
          */
-        if (filemtime($path) > $entry->lastModified()->timestamp && $config->get('app.debug')) {
+        if (
+            $entry->lastModified()
+            && filemtime($path) > $entry->lastModified()->timestamp
+            && $config->get('app.debug')
+        ) {
             $repository->save($entry->setRawAttribute($this->fieldType->getField(), $content));
         }
 
