@@ -1,8 +1,7 @@
 <?php namespace Anomaly\MarkdownFieldType\Command;
 
-
+use Anomaly\Streams\Platform\View\Twig\Bridge;
 use Illuminate\Filesystem\Filesystem;
-use TwigBridge\Bridge;
 
 /**
  * Class ClearCache
