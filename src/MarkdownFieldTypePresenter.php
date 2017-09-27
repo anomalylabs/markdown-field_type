@@ -4,7 +4,6 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
 use Anomaly\Streams\Platform\Support\Decorator;
 use Anomaly\Streams\Platform\Support\Str;
 use Anomaly\Streams\Platform\Support\Template;
-use Michelf\Markdown;
 
 class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
@@ -32,23 +31,14 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     protected $object;
 
     /**
-     * The markdown editor.
-     *
-     * @var Markdown
-     */
-    protected $markdown;
-
-    /**
      * Create a new MarkdownFieldTypePresenter instance.
      *
-     * @param Str $str
+     * @param Str      $str
      * @param Template $template
-     * @param Markdown $markdown
      * @param          $object
      */
-    public function __construct(Str $str, Template $template, Markdown $markdown, $object)
+    public function __construct(Str $str, Template $template, $object)
     {
-        $this->markdown = $markdown;
         $this->template = $template;
         $this->str      = $str;
 
@@ -72,7 +62,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function render()
     {
-        return $this->markdown->transform($this->object->getValue());
+        return (new \Parsedown())->parse($this->object->getValue());
     }
 
     /**
@@ -121,7 +111,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Return an excerpt of the text.
      *
-     * @param  int $length
+     * @param  int    $length
      * @param  string $ending
      * @return string
      */
