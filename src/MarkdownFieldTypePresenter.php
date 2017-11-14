@@ -2,9 +2,17 @@
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
 use Anomaly\Streams\Platform\Support\Decorator;
+use Anomaly\Streams\Platform\Support\Markdown;
 use Anomaly\Streams\Platform\Support\Str;
 use Anomaly\Streams\Platform\Support\Template;
 
+/**
+ * Class MarkdownFieldTypePresenter
+ *
+ * @link   http://pyrocms.com/
+ * @author PyroCMS, Inc. <support@pyrocms.com>
+ * @author Ryan Thompson <ryan@pyrocms.com>
+ */
 class MarkdownFieldTypePresenter extends FieldTypePresenter
 {
 
@@ -62,7 +70,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function render()
     {
-        return (new \Parsedown())->parse($this->object->getValue());
+        return (new Markdown())->parse($this->object->getValue());
     }
 
     /**
