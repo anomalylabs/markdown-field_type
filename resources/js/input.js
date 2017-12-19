@@ -1,13 +1,10 @@
-$(document).on('ajaxComplete ready', function () {
+(function (window, document) {
 
-    // Initialize markdown inputs.
-    $('[data-provides="anomaly.field_type.markdown"]:not([data-initialized])').each(function () {
+    let fields = Array.from(
+        document.querySelectorAll('textarea[data-provides="anomaly.field_type.markdown"]')
+    );
 
-        $(this)
-            .attr('data-initialized', '')
-            .markdown({
-                height: $(this).data('height'),
-                iconlibrary: 'fa'
-            });
+    fields.forEach(function (field) {
+        new SimpleMDE({element: field});
     });
-});
+})(window, document);

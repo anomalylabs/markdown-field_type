@@ -17,6 +17,13 @@ class MarkdownFieldType extends FieldType
 {
 
     /**
+     * The default input class.
+     *
+     * @var string
+     */
+    protected $class = '';
+
+    /**
      * The database column type.
      *
      * @var string
