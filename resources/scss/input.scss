@@ -377,7 +377,7 @@
         width: 50% !important
     }
     .editor-toolbar {
-        background: $gray-lighter;
+        background: #eceeef;
         position: relative;
         opacity: .6;
         -webkit-user-select: none;
@@ -415,7 +415,7 @@
         padding-top: 10px;
         padding-bottom: 10px;
         box-sizing: border-box;
-        background: $gray-lighter;
+        background: #eceeef;
         border: 0;
         position: fixed;
         top: 0;
@@ -517,11 +517,11 @@
 
     .editor-statusbar {
         padding: 8px 0;
-        font-size: $font-size-sm;
-        color: $text-muted;
+        font-size: .875rem;
+        color: #eceeef;
         text-align: left;
         display: inline-block;
-        line-height: $line-height-base;
+        line-height: 1.5;;
     }
 
     .editor-statusbar span {
