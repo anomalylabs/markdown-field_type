@@ -14,8 +14,7 @@
 
         if (tabs.length) {
             tabs.forEach(function (tab) {
-                tab.addEventListener('shown.bs.tab', function () {
-                    alert();
+                tab.addEventListener('click', function () {
                     setTimeout(function () {
                         markdown.codemirror.refresh();
                     }, 10);
