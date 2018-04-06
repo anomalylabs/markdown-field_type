@@ -1,10 +1,10 @@
 (function (window, document) {
 
-    let fields = Array.from(
+    let fields = Array.prototype.slice.call(
         document.querySelectorAll('textarea[data-provides="anomaly.field_type.markdown"]')
     );
 
-    let tabs = Array.from(
+    let tabs = Array.prototype.slice.call(
         document.querySelectorAll('a[data-toggle="tab"]')
     );
 
