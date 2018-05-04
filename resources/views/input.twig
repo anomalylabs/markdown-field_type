@@ -8,9 +8,3 @@
         {{ html_attributes(field_type.attributes) }}
         {{ field_type.disabled ? 'disabled' }}
         {{ field_type.readonly ? 'readonly' }}>{{ field_type.value }}</textarea>
-
-{% if config('app.debug') and field_type.storage_path %}
-    <small class="text-muted hidden-md">
-        {{ field_type.storage_path }}
-    </small>
-{% endif %}
