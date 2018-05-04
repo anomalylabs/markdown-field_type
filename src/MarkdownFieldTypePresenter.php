@@ -74,17 +74,6 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
-     * Return the rendered content.
-     *
-     * @return string
-     * @deprecated since version 2.0
-     */
-    public function rendered()
-    {
-        return $this->render();
-    }
-
-    /**
      * Return the parsed content.
      *
      * @param  array $payload
@@ -93,17 +82,6 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     public function parse(array $payload = [])
     {
         return $this->template->render($this->render(), (new Decorator())->decorate($payload));
-    }
-
-    /**
-     * Return the parsed content.
-     *
-     * @param  array $payload
-     * @return string
-     */
-    public function parsed(array $payload = [])
-    {
-        return $this->parse($payload);
     }
 
     /**
