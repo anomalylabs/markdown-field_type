@@ -124,6 +124,10 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function __toString()
     {
+        if (!$this->object->getValue()) {
+            return '';
+        }
+        
         return $this->render();
     }
 }
