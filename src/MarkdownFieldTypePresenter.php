@@ -41,7 +41,7 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     /**
      * Create a new MarkdownFieldTypePresenter instance.
      *
-     * @param Str      $str
+     * @param Str $str
      * @param Template $template
      * @param          $object
      */
@@ -68,9 +68,9 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      *
      * @return string
      */
-    public function render()
+    public function render(array $payload = [])
     {
-        return (new Markdown())->parse($this->object->getValue());
+        return $this->template->render($this->parse(), (new Decorator())->decorate($payload));
     }
 
     /**
@@ -79,9 +79,9 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      * @param  array $payload
      * @return string
      */
-    public function parse(array $payload = [])
+    public function parse()
     {
-        return $this->template->render($this->render(), (new Decorator())->decorate($payload));
+        return (new Markdown())->parse($this->object->getValue());
     }
 
     /**
@@ -91,13 +91,13 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function content()
     {
-        return file_get_contents($this->object->getStoragePath());
+        return $this->object->getValue();
     }
 
     /**
      * Return an excerpt of the text.
      *
-     * @param  int    $length
+     * @param  int $length
      * @param  string $ending
      * @return string
      */
@@ -124,10 +124,6 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
      */
     public function __toString()
     {
-        if (!$this->object->getValue()) {
-            return '';
-        }
-
         return $this->render();
     }
 }

@@ -3,8 +3,6 @@
 use Anomaly\MarkdownFieldType\Command\RenameDirectory;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 use Anomaly\Streams\Platform\Application\Application;
-use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
-use Anomaly\Streams\Platform\Entry\EntryTranslationsModel;
 
 /**
  * Class MarkdownFieldType
@@ -66,46 +64,31 @@ class MarkdownFieldType extends FieldType
     /**
      * Get the file path.
      *
-     * @return string
+     * @return null|string
      */
     public function getFilePath()
     {
-        if ($this->entry === null || !is_object($this->entry) || !$this->entry->getId()) {
-            return null;
-        }
-
-        if (!$this->entry instanceof EntryInterface && !$this->entry instanceof EntryTranslationsModel) {
-            return null;
-        }
-
-        $slug      = $this->entry->getStreamSlug();
-        $namespace = $this->entry->getStreamNamespace();
-        $directory = $this->entry->getEntryId();
-        $file      = $this->getFileName();
-
-        return implode(
-            DIRECTORY_SEPARATOR,
-            [
-                $namespace,
-                $slug,
-                $directory,
-                $file
-            ]
-        );
+        return str_replace('storage::', '', $this->template->asset($this->getValue(), 'md'));
     }
 
     /**
      * Get the storage path.
      *
-     * @return string
+     * @return null|string
      */
     public function getStoragePath()
     {
-        if (!$path = $this->getFilePath()) {
-            return null;
-        }
+        return $this->application->getStoragePath($this->getFilePath());
+    }
 
-        return $this->application->getStoragePath($path);
+    /**
+     * Get the view path.
+     *
+     * @return string
+     */
+    public function getViewPath()
+    {
+        return 'storage::' . str_replace('.md', '', $this->getFilePath());
     }
 
     /**
@@ -115,11 +98,7 @@ class MarkdownFieldType extends FieldType
      */
     public function getAssetPath()
     {
-        if (!$path = $this->getFilePath()) {
-            return null;
-        }
-
-        return 'storage::' . $path;
+        return 'storage::' . $this->getFilePath();
     }
 
     /**
@@ -127,8 +106,9 @@ class MarkdownFieldType extends FieldType
      *
      * @return string
      */
-    protected function getFileName()
+    public function getFileName()
     {
-        return trim($this->getField() . '_' . $this->getLocale(), '_') . '.md';
+        return basename($this->getFilePath());
     }
+
 }
