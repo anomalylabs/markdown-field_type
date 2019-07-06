@@ -4,8 +4,8 @@
         document.querySelectorAll('textarea[data-provides="anomaly.field_type.markdown"]:not(.initialized)')
     );
 
-    let tabs = Array.prototype.slice.call(
-        document.querySelectorAll('a[data-toggle="tab"]')
+    let triggers = Array.prototype.slice.call(
+        document.querySelectorAll('a[data-toggle="tab"], a[data-toggle="lang"]')
     );
 
     fields.forEach(function (field) {
@@ -18,15 +18,13 @@
 
         let markdown = new SimpleMDE({element: field});
 
-        if (tabs.length) {
-            tabs.forEach(function (tab) {
-                tab.addEventListener('click', function () {
-                    setTimeout(function () {
-                        markdown.codemirror.refresh();
-                    }, 10);
-                });
-            })
-        }
+        triggers.forEach(function (trigger) {
+            trigger.addEventListener('click', function () {
+                setTimeout(function () {
+                    markdown.codemirror.refresh();
+                }, 100);
+            });
+        });
     });
 
 })(window, document);
