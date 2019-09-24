@@ -1,7 +1,6 @@
 <?php namespace Anomaly\MarkdownFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldTypePresenter;
-use Anomaly\Streams\Platform\Support\Decorator;
 use Anomaly\Streams\Platform\Support\Markdown;
 use Anomaly\Streams\Platform\Support\Str;
 use Anomaly\Streams\Platform\Support\Template;
@@ -64,37 +63,6 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
-     * Return the rendered content.
-     *
-     * @return string
-     */
-    public function render(array $payload = [])
-    {
-        return (string)$this->template->render($this->parse(), (new Decorator())->decorate($payload));
-    }
-
-    /**
-     * Return the parsed content.
-     *
-     * @param  array $payload
-     * @return string
-     */
-    public function parse()
-    {
-        return (new Markdown())->parse($this->object->getValue());
-    }
-
-    /**
-     * Return the file contents.
-     *
-     * @return string
-     */
-    public function content()
-    {
-        return $this->object->getValue();
-    }
-
-    /**
      * Return an excerpt of the text.
      *
      * @param  int $length
@@ -118,6 +86,16 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     }
 
     /**
+     * Return the file contents.
+     *
+     * @return string
+     */
+    public function content()
+    {
+        return $this->object->getValue();
+    }
+
+    /**
      * Return the parsed content.
      *
      * @return string
@@ -125,5 +103,26 @@ class MarkdownFieldTypePresenter extends FieldTypePresenter
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     * Return the rendered content.
+     *
+     * @return string
+     */
+    public function render(array $payload = [])
+    {
+        return (string)$this->template->render($this->parse(), decorate($payload));
+    }
+
+    /**
+     * Return the parsed content.
+     *
+     * @param  array $payload
+     * @return string
+     */
+    public function parse()
+    {
+        return (new Markdown())->parse($this->object->getValue());
     }
 }

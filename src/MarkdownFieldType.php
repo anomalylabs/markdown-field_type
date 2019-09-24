@@ -43,6 +43,15 @@ class MarkdownFieldType extends FieldType
     protected $application;
 
     /**
+     * The field type config.
+     *
+     * @var array
+     */
+    protected $config = [
+        'height' => 300,
+    ];
+
+    /**
      * Create a new EditorFieldType instance.
      *
      * @param Application $application
@@ -53,13 +62,14 @@ class MarkdownFieldType extends FieldType
     }
 
     /**
-     * The field type config.
+     * Get the storage path.
      *
-     * @var array
+     * @return null|string
      */
-    protected $config = [
-        'height' => 300,
-    ];
+    public function getStoragePath()
+    {
+        return $this->application->getStoragePath($this->getFilePath());
+    }
 
     /**
      * Get the file path.
@@ -69,16 +79,6 @@ class MarkdownFieldType extends FieldType
     public function getFilePath()
     {
         return str_replace('storage::', '', $this->template->asset($this->getValue(), 'md'));
-    }
-
-    /**
-     * Get the storage path.
-     *
-     * @return null|string
-     */
-    public function getStoragePath()
-    {
-        return $this->application->getStoragePath($this->getFilePath());
     }
 
     /**
@@ -110,5 +110,4 @@ class MarkdownFieldType extends FieldType
     {
         return basename($this->getFilePath());
     }
-
 }
