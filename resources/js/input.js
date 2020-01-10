@@ -1,4 +1,4 @@
-(function (window, document) {
+(function () {
 
     let fields = Array.prototype.slice.call(
         document.querySelectorAll('textarea[data-provides="anomaly.field_type.markdown"]:not(.initialized)')
@@ -16,7 +16,9 @@
          */
         field.classList.add('initialized');
 
-        let markdown = new SimpleMDE({element: field});
+        let markdown = new SimpleMDE({
+            element: field
+        });
 
         triggers.forEach(function (trigger) {
             trigger.addEventListener('click', function () {
@@ -27,4 +29,4 @@
         });
     });
 
-})(window, document);
+});
